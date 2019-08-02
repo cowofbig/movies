@@ -8,6 +8,8 @@ import nowPlaying from '@/components/movie/movieComponents/nowPlaying.vue'
 import comingSoon from '@/components/movie/movieComponents/comingSoon.vue'
 import search from '@/components/movie/movieComponents/search.vue'
 
+
+import cinemaDefaultList from '@/components/cinema/cinemaComponents/cinemaDefaultList.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -42,7 +44,17 @@ export default new Router({
     {
       path: '/cinema',
       name: 'cinema',
-      component: cinema
+      component: cinema,
+      children:[
+      	{
+      		path:'cinemaDefaultList',
+      		component:cinemaDefaultList
+      	},
+      	{
+      		path:'/cinema',
+      		redirect:'/cinema/cinemaDefaultList'
+      	}
+      ]
     },
     {
       path: '/mine',
